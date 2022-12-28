@@ -1,13 +1,11 @@
 
 # Trading Bot
 
-**One-stop toolkit for fully automated algorithmic trading.**
-
-## What is This Project About?
+## One-stop toolkit for fully automated algorithmic trading.**
 
 Introducing the ultimate solution for automated trading: the One-Stop Toolkit for Algorithmic Trading. This powerful toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the cloud, while you are sipping margaritas on the Caribbean. All in one easy-to-use package.
 
-With our toolkit, you can easily design, test, and deploy your own trading strategies in any market. Whether you're a beginner or an experienced trader, our intuitive interface makes it easy to get started.
+With our toolkit, you can easily design, test, and deploy your own trading strategies. Whether you're a beginner or an experienced trader, our intuitive interface makes it easy to get started.
 
 Our toolkit includes a full suite of tools and features, including:
 
@@ -17,11 +15,11 @@ Our toolkit includes a full suite of tools and features, including:
 
 Don't waste your time with multiple tools and platforms – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start automating your trades today and see the results for yourself."
 
-**Includes:**
+## Includes:
 
 1. **Data Handling**
 
-	* A DataHandler class that serves as a processing interface between a REST client handling communication with different APIs and your csv data with a unified structure.
+	* A DataHandler class that acts as a bridge between your data and a REST client making it easy to communicate with different APIs, retrieve data, and store it in csv format with a unified structure.
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
