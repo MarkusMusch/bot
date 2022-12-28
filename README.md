@@ -55,6 +55,7 @@ First, clone the repository.
 ## Usage
 
 ### Live Trading
+<<<<<<< HEAD
 
 I personally run this code in the cloud and can help you get started.
 
@@ -101,6 +102,12 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 ### Assembling a Portfolio
 
 *Work in progress*
+=======
+
+I personally run this code in the cloud and can help you get started.
+
+If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+>>>>>>> 227788d6107e821cfa51673979addd6cf257d934
 
 ### Getting Data
 
@@ -158,6 +165,17 @@ The ```timedelta``` this way since we can at most request 1000 data entries at a
 
 *Work in progress*
 
+<<<<<<< HEAD
+=======
+### Writing a Strategy
+
+*Work in progress*
+
+### Assembling a Portfolio
+
+*Work in progress*
+
+>>>>>>> 227788d6107e821cfa51673979addd6cf257d934
 ## Contributing
 
 1. Fork it (https://github.com/MarkusMusch/bot/fork)
