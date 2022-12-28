@@ -3,9 +3,23 @@
 
 **One-stop toolkit for fully automated algorithmic trading.**
 
+## What is This Project About?
+
+Introducing the ultimate solution for automated trading: the One-Stop Toolkit for Algorithmic Trading. This powerful toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the cloud, while you are sipping margaritas on the Caribbean. All in one easy-to-use package.
+
+With our toolkit, you can easily design, test, and deploy your own trading strategies in any market. Whether you're a beginner or an experienced trader, our intuitive interface makes it easy to get started.
+
+Our toolkit includes a full suite of tools and features, including:
+
+* Data sourcing and handling
+* Customizable backtesting and optimization tools
+* Live trading and real-time market data
+
+Don't waste your time with multiple tools and platforms – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start automating your trades today and see the results for yourself."
+
 **Includes:**
 
-1. Data Handling
+1. **Data Handling**
 
 	* A DataHandler class that serves as a processing interface between a REST client handling communication with different APIs and your csv data with a unified structure.
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
@@ -17,7 +31,7 @@
 
     > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
 
-2. Backtesting
+2. **Backtesting**
 
 	* A Backtest class serving as a template for backtesting any strategy you will implement.
 	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
@@ -29,7 +43,7 @@
 
     > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary trading strategies starting 21st of February 2021.
 
-3. Live Trading
+3. **Live Trading**
 
 	* A REST client to deal with Binance API that you can easily adapt to work with your favorite exchanges' REST APIs.
 	* An abstract Strategy class that serves as a template for implementing your own strategies.
