@@ -12,9 +12,9 @@ import numpy as np
 import matplotlib.pyplot as plt
 from tqdm import tqdm
 
-from src.RESTClient import RESTClient
 from src.DataHandler import DataHandler
 from src.MarketStructure import MarketStructure
+from src.RESTClient import RESTClient
 from src.Strategy import Strategy
 
 
@@ -126,24 +126,13 @@ class Portfolio:
         for idxm, market in enumerate(self.markets):
 
             strategy_constructor = market.strategy
-            strat_name = market.strategy_name
-            market_name = market.market_name
             ath = market.ath
             prev_low = market.prev_low
-            initial_equity = market.initial_equity
-            timeframe = market.timeframe
-
-            rr = market.risk_reward
-            leverage = market.max_leverage
-            risk = market.max_risk
 
             ms = MarketStructure(ath, prev_low, ath, prev_low)
 
-            strategy = strategy_constructor(self._ec, ms, strat_name, market,
-                                            market_name, initial_equity, risk,
-                                            max_leverage=leverage,
-                                            timeframe=timeframe,
-                                            live=self._live, risk_reward=rr)
+            strategy = strategy_constructor(self._ec, ms, market,
+                                            live=self._live)
 
             self.add_strategy((market, strategy))
 
@@ -181,6 +170,6 @@ class Portfolio:
             market_name = strat[0].market_name
 
             df = self._dh.fetch_current_data(self._ec, market_name,
-                                             strat[1].timeframe)
+                                             strat[1].timeframe.value)
 
             strat[1].next_candle_live(df.iloc[-1])

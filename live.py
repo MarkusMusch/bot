@@ -3,11 +3,10 @@ import logging
 from apscheduler.schedulers.blocking import BlockingScheduler
 
 from src.RESTClient import BinanceFuturesClient
+from src.Assets import btc_cont_live, eth_cont_live, sol_cont_live, \
+                       doge_cont_live
 from src.DataHandler import DataHandler
 from src.Portfolio import Portfolio
-from src.Assets import btc_cont_live, eth_cont_live, sol_cont_live, \
-                       doge_cont_live, btc_rev_live, eth_rev_live, \
-                       bnb_rev_live
 
 
 def initialize_portfolio(live: bool = False):
@@ -20,8 +19,7 @@ def initialize_portfolio(live: bool = False):
 
     logging.getLogger().setLevel(logging.WARNING)
 
-    markets = [btc_cont_live, eth_cont_live, sol_cont_live, doge_cont_live,
-               btc_rev_live, eth_rev_live, bnb_rev_live]
+    markets = [btc_cont_live, eth_cont_live, sol_cont_live, doge_cont_live]
 
     portfolio = Portfolio(ec, dh, markets, live=live)
 
@@ -48,9 +46,6 @@ def trade(portfolio):
 
 if __name__ == '__main__':
 
-    live = True
+    portfolio = initialize_portfolio(live=True)
 
-    portfolio = initialize_portfolio(live=live)
-
-    if live:
-        trade(portfolio)
+    trade(portfolio)

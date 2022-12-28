@@ -234,7 +234,8 @@ class DataHandler:
         return quotes
 
     def aggregate_data(self, ec: RESTClient, market_name: str,
-                       timeframe: str, start_time: datetime) -> pd.DataFrame:
+                       timeframe: str, start_time: datetime,
+                       delta: timedelta) -> pd.DataFrame:
         """Aggregates the data from several requests.
 
         Parameters
@@ -255,7 +256,7 @@ class DataHandler:
         """
 
         start_time = start_time
-        end_time = start_time + timedelta(days=40)
+        end_time = start_time + delta
 
         df = pd.DataFrame()
 
@@ -267,6 +268,6 @@ class DataHandler:
             df = pd.concat([df, tmp_df], ignore_index=True)
 
             start_time = end_time
-            end_time = end_time + timedelta(days=40)
+            end_time = end_time + delta
 
         return df

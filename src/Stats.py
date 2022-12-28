@@ -78,7 +78,7 @@ class Stats:
             m_max = max(m_max, equity_curve[i])
             maxDD = min(maxDD, equity_curve[i]/m_max - 1)
 
-        return maxDD
+        return round(maxDD, 3)
 
     def _calculate_coeff_of_var(self, returns: np.array) -> np.array:
         """Calculate the coefficient of variation from the returns.
@@ -97,7 +97,7 @@ class Stats:
         mean = returns.mean()
         std = returns.std()
 
-        return std / mean
+        return round(std / mean, 2)
 
     def _calculate_sharpe(self, returns: np.array) -> np.array:
         """Calculate the Sharpe ratio from the returns.
@@ -117,7 +117,7 @@ class Stats:
         mean = returns.mean()
         std = returns.std()
 
-        return mean / std * np.sqrt(365/gap)
+        return round(mean / std * np.sqrt(365/gap), 2)
 
     def _calculate_sortino(self, returns: np.array) -> np.array:
         """Calculate the Sortino ratio from the returns.
@@ -138,7 +138,7 @@ class Stats:
         downside = (np.square(returns[returns < 0])).sum()
         downside_dev = np.sqrt(downside/returns.size)
 
-        return mean / downside_dev * np.sqrt(365/gap)
+        return round(mean / downside_dev * np.sqrt(365/gap), 2)
 
     def _calculate_omega(self, returns: np.array) -> np.array:
         """Calculate the Omega ratio from the returns.
@@ -158,9 +158,9 @@ class Stats:
         positive_area = returns[returns > 0].sum()
         negative_area = -returns[returns < 0].sum()
 
-        return positive_area / negative_area * np.sqrt(365/gap)
+        return round(positive_area / negative_area * np.sqrt(365/gap), 2)
 
-    def get_stats(self, equity_curve: np.array) -> None:
+    def get_stats(self, equity_curve: np.array) -> dict:
         """Calculate and print important stats of the strategy.
 
         Parameters
@@ -178,10 +178,19 @@ class Stats:
         sortino = self._calculate_sortino(returns)
         omega = self._calculate_omega(returns)
 
-        print('Mean:            {:.2%}'.format(mean))
-        print('Standard Deviation: {:.2%}'.format(std))
-        print('Max Drawdown:    {:.2%}'.format(max_dd))
-        print('Coefficient of Variation: {:.2f}'.format(coeff_of_var))
-        print('Hourly Sharpe:    {:.2f}'.format(sharpe))
-        print('Hourly Sortino:   {:.2f}'.format(sortino))
-        print('Hourly Omega:     {:.2f} \n'.format(omega))
+        return {'returns': returns, 'mean': mean, 'std': std,
+                'max_dd': max_dd, 'coeff_of_var': coeff_of_var,
+                'sharpe': sharpe, 'sortino': sortino, 'omega': omega}
+
+    def print_stats(self, equity_curve: np.array) -> None:
+        """Calculate and print important stats of the strategy."""
+
+        stats = self.get_stats(equity_curve)
+
+        print('Mean:            {:.2%}'.format(stats['mean']))
+        print('Standard Deviation: {:.2%}'.format(stats['std']))
+        print('Max Drawdown:    {:.2%}'.format(stats['max_dd']))
+        print('Coefficient of Variation: {:.2f}'.format(stats['coeff_of_var']))
+        print('Hourly Sharpe:    {:.2f}'.format(stats['sharpe']))
+        print('Hourly Sortino:   {:.2f}'.format(stats['sortino']))
+        print('Hourly Omega:     {:.2f} \n'.format(stats['omega']))

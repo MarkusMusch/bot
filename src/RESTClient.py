@@ -13,16 +13,16 @@ Classes
 """
 
 import configparser
-import os
 import logging
+import os
 import time
 
-import hmac
+from typing import Any
 import hashlib
+import hmac
 import requests
 from requests import Response
 from urllib.parse import urlencode
-from typing import Any
 
 
 class RESTClient:
@@ -219,7 +219,7 @@ class BinanceFuturesClient(TradeClient):
     def __init__(self):
 
         super().__init__('https://fapi.binance.com/', 'fapi/v1/klines',
-                         'fapi/v1/order', 'BINANCE API', maker_fees=0.0002,
+                         'fapi/v1/order', 'BINANCE_FUTURES', maker_fees=0.0002,
                          taker_fees=0.0004)
 
     def place_order(self, market: str, side: str, size: float,

@@ -8,9 +8,10 @@ Classes
 
 import logging
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 
+from dataclasses import dataclass
 from src.MarketStructure import MarketStructure
 from src.RESTClient import RESTClient
 from src.Strategy import Strategy
@@ -32,10 +33,8 @@ class ContinuationTrade(Strategy):
         trades.
     """
 
-    def __init__(self, ec: RESTClient, ms: MarketStructure, strat_name: str,
-                 asset: dict, market_name: str, equity: float,
-                 max_risk: float, max_leverage: float, timeframe: str = '1h',
-                 live: bool = False, risk_reward: float = 2.0):
+    def __init__(self, ec: RESTClient, ms: MarketStructure, asset: dataclass,
+                 live: bool = False, message: bool = True):
         """
         Parameters
         ----------
@@ -43,29 +42,16 @@ class ContinuationTrade(Strategy):
             Exchange client to interact with the exchange.
         ms : MarketStructure
             Represent the market structure of the asset.
-        strat_name : str
-            Name of the strategy.
         asset : dict
             Asset to trade.
-        market_name : str
-            Ticker of the market to trade.
-        equity : float
-            Initial equity of the strategy.
-        max_risk : float
-            Maximum risk per trade.
-        max_leverage : float
-            Maximum leverage of the strategy.
-        timeframe : str, optional
-            Timeframe of the strategy, by default '1h'
         live : bool, optional
             Whether the strategy is live or not, by default False
-        risk_reward : float, optional
-            Minimum risk reward ratio, by default 2.0
+        message : bool, optional
+            Whether to send messages to Telegram, by default True
         """
 
-        super().__init__(ec, ms, strat_name, asset, market_name, equity,
-                         max_risk, max_leverage, timeframe, live)
-        self._risk_reward = risk_reward
+        super().__init__(ec, ms, asset, live, message)
+        self._risk_reward = asset.risk_reward
 
     def next_candle_init(self, row: pd.Series) -> None:
         """Initializes the strategy by iterating through historical data

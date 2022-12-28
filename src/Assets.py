@@ -10,10 +10,16 @@ Classes
 
 from dataclasses import dataclass
 from datetime import datetime
+from enum import Enum
 
-from src.Strategy import Strategy
 from src.strategies.ContinuationTrade import ContinuationTrade
-from src.strategies.ReversalTrade import ReversalTrade
+from src.Strategy import Strategy
+
+
+class Timeframes(Enum):
+    ONE_HOUR = '1h'
+    FOUR_HOURS = '4h'
+    ONE_DAY = '1d'
 
 
 @dataclass
@@ -63,83 +69,47 @@ class Asset:
 btc_cont = Asset(ContinuationTrade, 'Continuation_Trade', 'BTCBUSD',
                  (58434.0, '2021-02-21 19:00:00+00:00'),
                  (57465.0, '2021-02-21 18:00:00+00:00'),
-                 datetime(2021, 2, 21, 20, 0, 0, 0), 100, '1h',
-                 0.1, 1.0, 2.0, 3)
-
-btc_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'BTCBUSD',
-                      (16880.8, '2022-12-23 10:00:00+00:00'),
-                      (16806.6, '2022-12-23 08:00:00+00:00'),
-                      datetime(2022, 12, 11, 20, 0, 0, 0), 100, '1h',
-                      0.1, 1.0, 2.0, 3)
+                 datetime(2021, 2, 21, 20, 0, 0, 0), 100,
+                 Timeframes.ONE_HOUR.value, 0.1, 1.0, 2.0, 3)
 
 eth_cont = Asset(ContinuationTrade, 'Continuation_Trade', 'ETHBUSD',
                  (4875.4, '2021-11-10 14:00:00+00:00'),
                  (4697.8, '2021-11-10 12:00:00+00:00'),
-                 datetime(2021, 11, 10, 15, 0, 0, 0), 100, '1h',
-                 0.05, 1.0, 3.0, 3)
-
-eth_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'ETHBUSD',
-                      (1227.73, '2022-12-23 02:00:00+00:00'),
-                      (1214.51, '2022-12-23 00:00:00+00:00'),
-                      datetime(2022, 12, 23, 3, 0, 0, 0), 100, '1h',
-                      0.05, 1.0, 3.0, 3)
+                 datetime(2021, 11, 10, 15, 0, 0, 0), 100,
+                 Timeframes.ONE_HOUR.value, 0.05, 1.0, 3.0, 3)
 
 sol_cont = Asset(ContinuationTrade, 'Continuation_Trade', 'SOLBUSD',
                  (261.5175, '2021-11-06 21:00:00+00:00'),
                  (252.49, '2021-11-06 20:00:00+00:00'),
-                 datetime(2021, 11, 6, 22, 0, 0, 0), 100, '1h',
-                 0.01, 1.0, 3.0, 0)
-
-sol_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'SOLBUSD',
-                      (12.087, '2022-12-22 20:00:00+00:00'),
-                      (11.717, '2022-12-22 17:00:00+00:00'),
-                      datetime(2022, 12, 22, 21, 0, 0, 0), 100, '1h',
-                      0.01, 1.0, 3.0, 0)
+                 datetime(2021, 11, 6, 22, 0, 0, 0), 100,
+                 Timeframes.ONE_HOUR.value, 0.01, 1.0, 3.0, 0)
 
 doge_cont = Asset(ContinuationTrade, 'Continuation_Trade', 'DOGEBUSD',
                   (0.744998, '2021-05-08 04:00:00+00:00'),
                   (0.6674, '2021-05-08 00:00:00+00:00'),
-                  datetime(2021, 5, 8, 5, 0, 0, 0), 100, '1h',
-                  0.01, 3.0, 3.0, 0)
+                  datetime(2021, 5, 8, 5, 0, 0, 0), 100,
+                  Timeframes.ONE_HOUR.value, 0.01, 3.0, 3.0, 0)
+
+btc_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'BTCBUSD',
+                      (16880.8, '2022-12-23 10:00:00+00:00'),
+                      (16806.6, '2022-12-23 08:00:00+00:00'),
+                      datetime(2022, 12, 11, 20, 0, 0, 0), 100,
+                      Timeframes.ONE_HOUR.value, 0.1, 1.0, 2.0, 3)
+
+eth_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'ETHBUSD',
+                      (1227.73, '2022-12-23 02:00:00+00:00'),
+                      (1214.51, '2022-12-23 00:00:00+00:00'),
+                      datetime(2022, 12, 23, 3, 0, 0, 0), 100,
+                      Timeframes.ONE_HOUR.value, 0.05, 1.0, 3.0, 3)
+
+sol_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'SOLBUSD',
+                      (12.087, '2022-12-22 20:00:00+00:00'),
+                      (11.717, '2022-12-22 17:00:00+00:00'),
+                      datetime(2022, 12, 22, 21, 0, 0, 0), 100,
+                      Timeframes.ONE_HOUR.value, 0.01, 1.0, 3.0, 0)
 
 doge_cont_live = Asset(ContinuationTrade, 'Continuation_Trade', 'DOGEBUSD',
                        (0.07899, '2022-12-23 05:00:00+00:00'),
                        (0.07676, '2022-12-22 23:00:00+00:00'),
-                       datetime(2022, 12, 23, 6, 0, 0, 0), 100, '1h',
-                       0.01, 3.0, 3.0, 0)
-
-btc_rev = Asset(ReversalTrade, 'Reversal_Trade', 'BTCBUSD',
-                (58434.0, '2021-02-21 19:00:00+00:00'),
-                (57465.0, '2021-02-21 18:00:00+00:00'),
-                datetime(2021, 2, 21, 20, 0, 0, 0), 100, '1h',
-                0.05, 3.0, 3.0, 3)
-
-btc_rev_live = Asset(ReversalTrade, 'Reversal_Trade', 'BTCBUSD',
-                     (16880.8, '2022-12-23 10:00:00+00:00'),
-                     (16806.6, '2022-12-23 08:00:00+00:00'),
-                     datetime(2022, 12, 11, 20, 0, 0, 0), 100, '1h',
-                     0.05, 3.0, 3.0, 3)
-
-eth_rev = Asset(ReversalTrade, 'Reversal_Trade', 'ETHBUSD',
-                (4875.4, '2021-11-10 14:00:00+00:00'),
-                (4697.8, '2021-11-10 12:00:00+00:00'),
-                datetime(2021, 11, 10, 15, 0, 0, 0), 100, '1h',
-                0.001, 5.0, 3.0, 3)
-
-eth_rev_live = Asset(ReversalTrade, 'Reversal_Trade', 'ETHBUSD',
-                     (1227.73, '2022-12-23 02:00:00+00:00'),
-                     (1214.51, '2022-12-23 00:00:00+00:00'),
-                     datetime(2022, 12, 23, 3, 0, 0, 0), 100, '1h',
-                     0.001, 5.0, 3.0, 3)
-
-bnb_rev = Asset(ReversalTrade, 'Reversal_Trade', 'BNBBUSD',
-                (693.775, '2021-05-10 06:00:00+00:00'),
-                (671.355, '2021-05-10 05:00:00+00:00'),
-                datetime(2021, 5, 10, 7, 0, 0, 0), 100, '1h',
-                0.01, 5.0, 3.0, 2)
-
-bnb_rev_live = Asset(ReversalTrade, 'Reversal_Trade', 'BNBBUSD',
-                     (254.12, '2022-12-18 04:00:00+00:00'),
-                     (239.07, '2022-12-18 01:00:00+00:00'),
-                     datetime(2022, 12, 18, 5, 0, 0, 0), 100, '1h',
-                     0.01, 5.0, 3.0, 2)
+                       datetime(2022, 12, 23, 6, 0, 0, 0), 100,
+                       Timeframes.ONE_HOUR.value, 0.01, 3.0, 3.0, 0)

@@ -124,11 +124,16 @@ class MarketStructure:
     def structure(self):
         """Prints the market structure."""
 
+        prev_high_ts = str(pd.to_datetime(self.prev_high[1]*1000000))
+        prev_low_ts = str(pd.to_datetime(self.prev_low[1]*1000000))
+        prv_h_ts = str(pd.to_datetime(self.provisional_high[1]*1000000))
+        prv_l_ts = str(pd.to_datetime(self.provisional_low[1]*1000000))
+
         print('Market Structure: \n'
-              + f'prev_high: {(self.prev_high[0], str(pd.to_datetime(self.prev_high[1]*1000000)))} \n'
-              + f'prev_low: {(self.prev_low[0], str(pd.to_datetime(self.prev_low[1]*1000000)))} \n'
-              + f'provisional_high: {(self.provisional_high[0], str(pd.to_datetime(self.provisional_high[1]*1000000)))} \n'
-              + f'provisional_low: {(self.provisional_low[0], str(pd.to_datetime(self.provisional_low[1]*1000000)))} \n')
+              + f'high: {(self.prev_high[0], prev_high_ts)} \n'
+              + f'low: {(self.prev_low[0], prev_low_ts)} \n'
+              + f'provisional_high: {(self.provisional_high[0], prv_h_ts)} \n'
+              + f'provisional_low: {(self.provisional_low[0], prv_l_ts)} \n')
 
     def _break_up_trend(self, row: pd.Series) -> None:
         """Sets the new market structure after break of an up trend.

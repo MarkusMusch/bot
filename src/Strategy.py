@@ -8,19 +8,20 @@ Classes
         such as buying and selling.
 """
 
-import os
-import logging
+from abc import ABC, abstractmethod
 import configparser
 from typing import Any
-from abc import ABC, abstractmethod
+import logging
+import os
 
-import pandas as pd
 import numpy as np
+import pandas as pd
 import matplotlib.pyplot as plt
 import requests
+from dataclasses import dataclass
 
 from src.MarketStructure import MarketStructure
-from src.RESTClient import RESTClient
+from src.RESTClient import TradeClient
 
 
 class Strategy(ABC):
@@ -56,10 +57,8 @@ class Strategy(ABC):
         Plots the position size of the strategy.
     """
 
-    def __init__(self, ec: RESTClient, ms: MarketStructure, strat_name: str,
-                 asset: dict, market_name: str, equity: float,
-                 max_risk: float, max_leverage: float = 1.0,
-                 timeframe: str = '1h', live: bool = False):
+    def __init__(self, ec: TradeClient, ms: MarketStructure,
+                 asset: dataclass, live: bool = False, message: bool = True):
         """
         Parameters
         ----------
@@ -67,33 +66,23 @@ class Strategy(ABC):
             RESTClient object to fetch data.
         ms : MarketStructure
             MarketStructure object representing the market structure.
-        strat_name : str
-            Name of the strategy.
         asset : dict
             Dictionary of asset information.
-        market_name : str
-            Name of the market.
-        equity : float
-            Initial equity of the strategy.
-        max_risk : float
-            Maximum risk per trade.
-        max_leverage : float
-            Maximum leverage of the strategy.
-        timeframe : str
-            Timeframe of the strategy.
         live : bool
             Whether the strategy is live or not.
+        message : bool
+            Whether to send messages to telegram.
         """
 
         self.ms = ms
         self.ec = ec
-        self.timeframe = timeframe
-        self.equity_curve = np.array([equity])
+        self.timeframe = asset.timeframe
+        self.equity_curve = np.array([asset.initial_equity])
         self.position_size = [0]
         self.num_trades = 0
         self.wins = 0
         self.win_rate = 0
-        self._strat_name = strat_name
+        self._strat_name = asset.strategy_name
         self._position = 0
         self._long_trigger = False
         self._long_position = False
@@ -103,6 +92,7 @@ class Strategy(ABC):
         self._stop_loss = None
         self._target = None
         self._live = live
+        self._message = message
         self._asset = asset
         self._equity = asset.initial_equity
 
@@ -149,12 +139,10 @@ class Strategy(ABC):
 
     def _send_message(self, message: str) -> Any:
         """Send a message to telegram.
-
         Parameters
         ----------
         message : str
             The message to send.
-
         Returns
         -------
         Any
@@ -164,8 +152,12 @@ class Strategy(ABC):
         config = configparser.ConfigParser()
         config.read(os.path.expanduser('~') + '/config.ini')
 
-        bot_token = config['Telegram']['bot_token']
-        group_id = config['Telegram']['group_id']
+        if self._message:
+            bot_token = config['Telegram']['bot_token']
+            group_id = config['Telegram']['group_id']
+        else:
+            bot_token = config['Telegram Dev']['bot_token']
+            group_id = config['Telegram Dev']['group_id']
 
         params = {'chat_id': group_id, 'text': message, 'parse_mode': 'HTML'}
         response = requests.post('https://api.telegram.org/bot{}/sendMessage'
