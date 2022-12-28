@@ -5,20 +5,17 @@
 
 **Includes:**
 
-1. Live Trading
+1. Data Handling
 
-	* A REST client to deal with Binance API that you can easily adapt to work with your favorite exchanges' REST APIs.
-	* An abstract Strategy class that serves as a template for implementing your own strategies.
-	* An example strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
-	* A Portfolio class that makes combining your strategies into full portfolios straight forward.
+	* A DataHandler class that serves as a processing interface between a REST client handling communication with different APIs and your csv data with a unified structure.
+    * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
+	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
 	<p align="center">
-	<img src="https://github.com/MarkusMusch/bot/blob/main/images/pnl.jpeg" />
+	<img src="https://github.com/MarkusMusch/bot/blob/main/images/backtest_flowchart.png" />
 	</p>
 
-    > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
-    >
-    > Note! This repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my trading portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
+    > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
 
 2. Backtesting
 
@@ -32,17 +29,20 @@
 
     > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary trading strategies starting 21st of February 2021.
 
-3. Data Handling
+3. Live Trading
 
-	* A DataHandler class that serves as a processing interface between a REST client handling communication with different APIs and your csv data with a unified structure.
-    * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
-	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
+	* A REST client to deal with Binance API that you can easily adapt to work with your favorite exchanges' REST APIs.
+	* An abstract Strategy class that serves as a template for implementing your own strategies.
+	* An example strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
+	* A Portfolio class that makes combining your strategies into full portfolios straight forward.
 
 	<p align="center">
-	<img src="https://github.com/MarkusMusch/bot/blob/main/images/backtest_flowchart.png" />
+	<img src="https://github.com/MarkusMusch/bot/blob/main/images/pnl.jpeg" />
 	</p>
 
-    > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
+    > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
+    >
+    > Note! This repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my trading portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
 
 ## Installation
 
@@ -83,11 +83,23 @@ The Strategy base class has a total of eight abstract methods that we have to im
 
 The ```next_candle_init``` and ```next_candle_live``` methods give an interface for our backtest and live trading modules to distinguish between the two.
 
-If we are initializing a strategy for live trading or only running a backtest, we call the ```next_candle_init``` method. 
+If we are initializing a strategy for live trading, we call the ```next_candle_init``` method. 
 
+
+```Python
+def  next_candle_init(self, row: pd.Series) -> None:
+	"""Initializes the strategy by iterating through historical data
+	without executing trades.
+
+	Parameters
+	----------
+	row : pd.Series
+	Row of historical data.
+	"""
+
+	self._setup_trade(row)
 ```
-bla
-```
+
 
 This method only calls the ```setup_trade``` methods.
 
@@ -97,9 +109,23 @@ If we are not trading live, we record the current equity in every step to evalua
 
 If we are trading live, we call the ```next_candle_live``` method.
 
+
+
+```Python
+def  next_candle_live(self, row: pd.Series) -> None:
+"""Checks for valid trade set ups with new live data and execute live
+trades.
+
+Parameters
+----------
+row : pd.Series
+Row of live data.
+"""
+
+self._execute_trade(row)
+self._setup_trade(row)
 ```
-bla
-```
+
 
 This method calls both the ```execute_trade``` method to generate live signals, and the ```setup_trade``` method to detect new set ups.
 
