@@ -100,7 +100,7 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" 
-  width=100%/>
+  width=80%/>
 </p>
 
 #### Full Portfolio Backtest
