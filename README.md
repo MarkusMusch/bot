@@ -17,7 +17,7 @@
 	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
 	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
 
-    [Image](./images/portfolio_equity_curve.png) 
+    ![Image](./images/portfolio_equity_curve.png) 
 
 3. Live Trading
 
