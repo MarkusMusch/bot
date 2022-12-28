@@ -11,7 +11,7 @@
 	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
 	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
 
-    ![Image](./images/portfolio_equity_curve.png) 
+    ![Image](./images/portfolio_equity_curve.png)
 
 2. Live Trading
 
@@ -28,6 +28,8 @@
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
+    ![Image](./images/Backtest.pdf) 
+
 ## Installation
 
 First, clone the repository.
@@ -37,7 +39,7 @@ First, clone the repository.
  ```
  
  Second, install all third party libraries necessary. Those are all listed in the [requirements.txt](requirements.txt).
- 
+
  ```bash
  pip install -r requirements.txt
  ```
