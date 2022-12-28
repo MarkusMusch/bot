@@ -64,7 +64,7 @@ First, clone the repository.
 
 I personally run this code in the cloud and can help you get started.
 
-If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+If you are serious about setting up this framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
 
 ### Writing a Strategy
 
@@ -108,6 +108,12 @@ The ```execute_trade``` method checks if a new trigger has been set or if there 
 If ```entry_long``` or ```entry_short``` is being called some more conditions such as a sufficient reward/risk ratio are being checked. If those conditions are satisfied a trade is being entered on exchange via our RESTClient object.
 
 If ```exit_long``` or ```exit_short``` is being called the current trade is being closed on exchange via our RESTClient object.
+
+
+<p align="center">
+<img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_control_flow.png" />
+</p>
+
 
 ### Assembling a Full Portfolio for Live Trading
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
