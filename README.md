@@ -99,7 +99,8 @@ for  market  in  markets:
 The Backtest object will also save a report of you backtest in the /bot/back_tests/backtest_reports/ directory including equity curves and the most important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
 
 <p align="center">
-  <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" />
+  <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" 
+  width=100%/>
 </p>
 
 #### Full Portfolio Backtest
