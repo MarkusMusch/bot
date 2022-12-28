@@ -1,6 +1,5 @@
 # Trading Bot
 
-----------
 Brief project description 2-3 sentences.
 
 One-stop toolkit for fully automated algorithmic trading.
@@ -30,23 +29,28 @@ Includes:
 Implements classes to represent market structure, generate trade
 signals and execute them on an exchange by communicating via API.
 
-## About
+# About
 
 Write about 1-2 paragraphs describing the purpose of your project.
 
-## Getting Started
+# Getting Started
 
 These instructions will get you a copy of the project up and running on your local machine for development and testing purposes.
 
-## Installing
+# Installing
 
 Installation instructions.
 
-## Usage
+# Usage
 
 A step by step series of examples that tell you how to get a development env running.
 
-## Contributing
+# Contributing
+
+
+# License and author info
+
+## Author
 
 Markus Musch: [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/) 
 
