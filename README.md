@@ -5,21 +5,22 @@
 
 ### Includes:
 
-1. Backtesting
-
-	* A Backtest class serving as a template for backtesting any strategy you will implement.
-	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
-	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
-
-    ![Image](./images/portfolio_equity_curve.png)
-
-2. Live Trading
+1. Live Trading
 
 	* A REST client to deal with Binance API that you can easily adapt to work with your favorite exchanges' REST APIs.
 	* An abstract Strategy class that serves as a template for implementing your own strategies.
 	* An example strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
 	* A Portfolio class that makes combining your strategies into full portfolios straight forward.
 
+    ![Image](./images/pnl.jpeg)
+
+2. Backtesting
+
+	* A Backtest class serving as a template for backtesting any strategy you will implement.
+	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
+	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
+
+    ![Image](./images/portfolio_equity_curve.png)
 
 
 3. Data Handling
