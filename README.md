@@ -12,7 +12,9 @@
 	* An example strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
 	* A Portfolio class that makes combining your strategies into full portfolios straight forward.
 
-    ![Image](./images/pnl.jpeg)
+	<p align="center">
+	<img src="https://github.com/MarkusMusch/bot/blob/main/images/pnl.jpeg" />
+	</p>
 
     > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
     >
@@ -24,7 +26,9 @@
 	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
 	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
 
-    ![Image](./images/equity_curve.png)
+	<p align="center">
+	<img src="https://github.com/MarkusMusch/bot/blob/main/images/equity_curve.png" />
+	</p>
 
     > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary trading strategies starting 21st of February 2021.
 
@@ -34,7 +38,9 @@
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
-    ![Image](./images/backtest_flowchart.png)
+	<p align="center">
+	<img src="https://github.com/MarkusMusch/bot/blob/main/images/backtest_flowchart.png" />
+	</p>
 
     > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
 
@@ -95,8 +101,6 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" />
 </p>
-
-![image](./images/single_strat_backtest.png)
 
 #### Full Portfolio Backtest
 
