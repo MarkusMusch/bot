@@ -54,8 +54,11 @@ First, clone the repository.
 
 ## Usage
 
-## Getting Data
+### Live Trading
 
+I personally run this code in the cloud and can help you get started.
+
+If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
 
 ### Getting Data
 
@@ -121,12 +124,6 @@ The ```timedelta``` this way since we can at most request 1000 data entries at a
 ### Assembling a Portfolio
 
 *Work in progress*
-
-### Live Trading
-
-I personally run this code in the cloud and can help you get started.
-
-If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
 
 ## Contributing
 
