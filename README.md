@@ -66,6 +66,37 @@ I personally run this code in the cloud and can help you get started.
 
 If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
 
+### Writing a Strategy
+
+Our example is a strategy that bets on the continuation of an ongoing trend. If the market is in an up-trend, and certain criteria are satisfied, the strategy enters a long trade to profit from the continuation of the up-trend. In the same way, we enter a short trade if the market is in an ongoing down-trend and certain criteria are satisfied.
+
+Whilst the abstract strategy class is in the /bot/src/ directory, the actual implementation of a particular strategy is in the /bot/src/strategies directory. 
+
+So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
+  
+<p  align="center">
+<img  src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png"  />
+</p>
+
+### Assembling a Full Portfolio for Live Trading
+To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
+
+```Python
+from  src.Assets  import  btc_cont_live, eth_cont_live, sol_cont_live, \
+						  doge_cont_live
+```
+
+and define the markets you want to trade in the main function
+
+```Python
+if  __name__ == '__main__':
+
+	markets = [btc_cont_live, eth_cont_live, sol_cont_live, doge_cont_live]
+
+	portfolio = initialize_portfolio(markets, live=True)
+
+	trade(portfolio)
+```
 
 ### Writing Backtests: Single Strategies and Full Portfolios
 
@@ -102,21 +133,31 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" 
   width=80%/>
 </p>
-<p align="center">
-  <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest_scaled.png" />
-</p>
 
 #### Full Portfolio Backtest
 
-*Work in progress*
+Setting up a full portfolio backtest works almost the same way as setting up a portfolio for live trading which has been explained above.
 
-### Assembling a Portfolio
+To assemble your portfolio, define your tradable assets in Assets.py. Import them into the backtest_portfolio.py module like this:
 
-*Work in progress*
+```Python
+from  src.Assets  import  btc_cont, eth_cont, sol_cont, doge_cont
+```
 
-I personally run this code in the cloud and can help you get started.
+and define the markets you want to trade in the main function
 
-If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+```Python
+if  __name__ == '__main__':
+
+markets = [btc_cont, eth_cont, sol_cont, doge_cont]
+
+portfolio = initialize_portfolio(markets, live=False)
+```
+The only difference to setting up a live trading portfolio is that we set the live parameter to ```False``` when initializing the portfolio and not calling the trade function that initiate the scheduler for live trading.
+
+<p align="center">
+  <img src="https://github.com/MarkusMusch/bot/blob/main/images/portfolio_backtest.png">
+</p>
 
 ### Getting Data
 
@@ -150,9 +191,9 @@ By default, the time frames 1d, 1h, and 4h are implemented but if you are intere
 
 ```Python
 class  Timeframes(Enum):
-ONE_HOUR = '1h'
-FOUR_HOURS = '4h'
-ONE_DAY = '1d'
+	ONE_HOUR = '1h'
+	FOUR_HOURS = '4h'
+	ONE_DAY = '1d'
 ```
 
 in Assets.py.
@@ -170,21 +211,6 @@ print(Timeframes.FIVE_MINUTES.value + ' done! \n')
 ```
 The ```timedelta``` this way since we can at most request 1000 data entries at a time from the Binance API. By default it is 500 data entries, but by explicitly requesting 1000 we can reduce the number of requests and therefore the time it takes to download our data.
 
-### Writing a Backtest
-
-*Work in progress*
-
-<<<<<<< HEAD
-=======
-### Writing a Strategy
-
-*Work in progress*
-
-### Assembling a Portfolio
-
-*Work in progress*
-
->>>>>>> 227788d6107e821cfa51673979addd6cf257d934
 ## Contributing
 
 1. Fork it (https://github.com/MarkusMusch/bot/fork)

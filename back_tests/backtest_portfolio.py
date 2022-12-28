@@ -13,7 +13,7 @@ from src.Portfolio import Portfolio
 from src.Stats import Stats
 
 
-def initialize_portfolio(live: bool = False):
+def initialize_portfolio(markets: list, live: bool = False):
     logging.basicConfig(filename='scalp_bot.log', level=logging.WARNING)
 
     ec = BinanceFuturesClient()
@@ -22,8 +22,6 @@ def initialize_portfolio(live: bool = False):
     dh = DataHandler(vd=False)
 
     logging.getLogger().setLevel(logging.WARNING)
-
-    markets = [btc_cont, eth_cont, sol_cont, doge_cont]
 
     portfolio = Portfolio(ec, dh, markets, live=live)
 
@@ -49,4 +47,6 @@ def execute(portfolio):
 
 if __name__ == '__main__':
 
-    portfolio = initialize_portfolio(live=False)
+    markets = [btc_cont, eth_cont, sol_cont, doge_cont]
+
+    portfolio = initialize_portfolio(markets, live=False)

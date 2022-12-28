@@ -9,7 +9,7 @@ from src.DataHandler import DataHandler
 from src.Portfolio import Portfolio
 
 
-def initialize_portfolio(live: bool = False):
+def initialize_portfolio(markets: list, live: bool = False):
     logging.basicConfig(filename='scalp_bot.log', level=logging.WARNING)
 
     ec = BinanceFuturesClient()
@@ -18,8 +18,6 @@ def initialize_portfolio(live: bool = False):
     dh = DataHandler(vd=False)
 
     logging.getLogger().setLevel(logging.WARNING)
-
-    markets = [btc_cont_live, eth_cont_live, sol_cont_live, doge_cont_live]
 
     portfolio = Portfolio(ec, dh, markets, live=live)
 
@@ -46,6 +44,8 @@ def trade(portfolio):
 
 if __name__ == '__main__':
 
-    portfolio = initialize_portfolio(live=True)
+    markets = [btc_cont_live, eth_cont_live, sol_cont_live, doge_cont_live]
+
+    portfolio = initialize_portfolio(markets, live=True)
 
     trade(portfolio)
