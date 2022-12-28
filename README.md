@@ -76,7 +76,7 @@ So, to implement our trend continuation strategy we create a new file in the /bo
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_inheritance.png"
-  height=20%>
+  width=20%>
 </p>
 
 ### Assembling a Full Portfolio for Live Trading
