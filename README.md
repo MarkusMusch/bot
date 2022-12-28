@@ -28,7 +28,7 @@
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
-    ![Image](./images/Backtest.pdf) 
+    ![Image](./images/Backtest.png) 
 
 ## Installation
 
@@ -46,7 +46,7 @@ First, clone the repository.
 
 ## Usage
 
-### Getting Data
+## Getting Data
 
 *Work in progress*
 
