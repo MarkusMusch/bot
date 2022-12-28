@@ -15,7 +15,7 @@
     ![Image](./images/pnl.jpeg)
 
     > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
-
+    >
     > Note this repository does not contain my full set of proprietary trading strategies, but only one of the strategies which make up my trading portfolio as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
 
 2. Backtesting
