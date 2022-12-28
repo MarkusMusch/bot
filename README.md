@@ -1,7 +1,7 @@
 
 # Trading Bot
 
-## One-stop toolkit for fully automated algorithmic trading.**
+## One-Stop Toolkit for Fully Automated Algorithmic Trading.
 
 Introducing the ultimate solution for automated trading: the One-Stop Toolkit for Algorithmic Trading. This powerful toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the cloud, while you are sipping margaritas on the Caribbean. All in one easy-to-use package.
 
@@ -27,13 +27,13 @@ Don't waste your time with multiple tools and platforms – get everything you n
 	<img src="https://github.com/MarkusMusch/bot/blob/main/images/backtest_flowchart.png" />
 	</p>
 
-    > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
+    > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our trading strategies.
 
 2. **Backtesting**
 
-	* A Backtest class serving as a template for backtesting any strategy you will implement.
-	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
-	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
+	* The Backtest class serves as a template for backtesting, making it easy to plug in your own strategies and see how they would have fared under different market conditions in the past.
+	* Two ready-to-use examples for an example strategy and an example portfolio, making it easy to get started with backtesting your own strategies.
+	* Backtest reports for the example strategy that provide a comprehensive overview of the strategy's performance, including plots of the equity curve and important performance metrics for different parameters.
 
 	<p align="center">
 	<img src="https://github.com/MarkusMusch/bot/blob/main/images/equity_curve.png" />
@@ -43,10 +43,10 @@ Don't waste your time with multiple tools and platforms – get everything you n
 
 3. **Live Trading**
 
-	* A REST client to deal with Binance API that you can easily adapt to work with your favorite exchanges' REST APIs.
-	* An abstract Strategy class that serves as a template for implementing your own strategies.
-	* An example strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
-	* A Portfolio class that makes combining your strategies into full portfolios straight forward.
+	* A REST client to deal with Binance API, that you can easily adapt to work with your favorite exchange's API.
+	* An abstract Strategy class that serves as a foundation for your strategies, providing a clear structure and a set of guidelines for implementation.
+	* A a tried and tested trading strategy that serves as a blueprint for your own strategies or as a starting point to build upon.
+	* A Portfolio class that makes combining your strategies into full cohesive, well-balanced portfolios as easy as one-two-three.
 
 	<p align="center">
 	<img src="https://github.com/MarkusMusch/bot/blob/main/images/pnl.jpeg" />
@@ -54,7 +54,7 @@ Don't waste your time with multiple tools and platforms – get everything you n
 
     > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
     >
-    > Note! This repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my trading portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
+    > Note! This public repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
 
 ## Installation
 
