@@ -1,8 +1,0 @@
-INFO:root:INITIALIZATION DONE!
-INFO:root:INITIALIZATION DONE!
-INFO:root:INITIALIZATION DONE!
-INFO:root:INITIALIZATION DONE!
-INFO:apscheduler.scheduler:Adding job tentatively -- it will be properly scheduled when the scheduler starts
-INFO:apscheduler.scheduler:Added job "execute" to job store "default"
-INFO:apscheduler.scheduler:Scheduler started
-INFO:root:INITIALIZATION DONE!
