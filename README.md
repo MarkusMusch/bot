@@ -101,7 +101,6 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 ### Assembling a Portfolio
 
 *Work in progress*
-=======
 
 I personally run this code in the cloud and can help you get started.
 
