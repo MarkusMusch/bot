@@ -24,10 +24,9 @@
 	* Two backtest modules for an example strategy and an example portfolio that you can copy paste and easily adapt to your use case.
 	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
 
-    ![Image](./images/portfolio_equity_curve.png)
     ![Image](./images/equity_curve.png)
 
-    > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary strategies starting January 2021.
+    > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary trading strategies starting 21st of February 2021.
 
 3. Data Handling
 
@@ -57,7 +56,59 @@ First, clone the repository.
 
 ## Getting Data
 
-*Work in progress*
+
+### Getting Data
+
+In Assets.py instantiate an object representing your asset. For a continuation trade on Bitcoin we do it like this:
+
+```Python
+btc_cont = Asset(ContinuationTrade, 'Continuation_Trade', 'BTCBUSD',
+				 (58434.0, '2021-02-21 19:00:00+00:00'),
+				 (57465.0, '2021-02-21 18:00:00+00:00'),
+				 datetime(2021, 2, 21, 20, 0, 0, 0), 100,
+				 Timeframes.ONE_HOUR.value, 0.1, 1.0, 2.0, 3)
+```
+
+In the datapipline.py module we define the tickers we are interested in.
+
+
+```Python
+busd_markets = ['BTCBUSD', 'ETHBUSD', 'SOLBUSD', 'DOGEBUSD']
+```
+
+In our case we are interested in the BUSD futures for $BTC, $ETH, $SOL, and $DOGE. If you are interested in other coins you can find out their ticker on your exchanges' website and replace them in the list above. Make sure to also adapt the classes in the RESTClient.py module if you are using another exchange.
+
+Now we only need to run
+```bash
+Python3 datapipeline.py
+```
+
+from the /bot directory and it will load the requested data from the Binance futures API into csv files located in the /bot/database/datasets directory.
+
+By default, the time frames 1d, 1h, and 4h are implemented but if you are interested in other time frames you can easily extend the Enum
+
+```Python
+class  Timeframes(Enum):
+ONE_HOUR = '1h'
+FOUR_HOURS = '4h'
+ONE_DAY = '1d'
+```
+
+in Assets.py.
+
+If, for example, you wanted to add the 5m time frame, you would simply add the line
+
+```Python
+FIVE_MINUTES = '5m'
+```
+in the Enum in Assets.py and the lines
+
+```Python
+download(market, Timeframes.FIVE_MINUTES.value, timedelta(minutes=4999))
+print(Timeframes.FIVE_MINUTES.value + ' done! \n')
+```
+The ```timedelta``` this way since we can at most request 1000 data entries at a time from the Binance API. By default it is 500 data entries, but by explicitly requesting 1000 we can reduce the number of requests and therefore the time it takes to download our data.
+
 
 ### Writing a Backtest
 
