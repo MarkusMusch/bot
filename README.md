@@ -73,10 +73,6 @@ Our example is a strategy that bets on the continuation of an ongoing trend. If 
 Whilst the abstract strategy class is in the /bot/src/ directory, the actual implementation of a particular strategy is in the /bot/src/strategies directory. 
 
 So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
-  
-<p  align="center">
-<img  src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png"  />
-</p>
 
 ### Assembling a Full Portfolio for Live Trading
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
@@ -130,8 +126,7 @@ for  market  in  markets:
 The Backtest object will also save a report of you backtest in the /bot/back_tests/backtest_reports/ directory including equity curves and the most important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
 
 <p align="center">
-  <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png" 
-  width=50%/>
+  <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png">
 </p>
 
 #### Full Portfolio Backtest
