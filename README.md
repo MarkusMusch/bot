@@ -3,7 +3,7 @@
 
 **One-stop toolkit for fully automated algorithmic trading.**
 
-### Includes:
+**Includes:**
 
 1. Live Trading
 
@@ -16,7 +16,7 @@
 
     > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
     >
-    > Note this repository does not contain my full set of proprietary trading strategies, but only one of the strategies which make up my trading portfolio as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
+    > Note! This repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my trading portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
 
 2. Backtesting
 
@@ -25,7 +25,9 @@
 	* Backtest reports for the example strategy including plots of the equity curve and important performance metrics for different parameters.
 
     ![Image](./images/portfolio_equity_curve.png)
+    ![Image](./images/equity_curve.png)
 
+    > The backtest in the image above shows the returns that would have been achieved with the full portfolio of proprietary strategies starting January 2021.
 
 3. Data Handling
 
@@ -33,7 +35,9 @@
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
-    ![Image](./images/Backtest.png) 
+    ![Image](./images/Backtest.png)
+
+    > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
 
 ## Installation
 
