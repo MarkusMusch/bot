@@ -34,7 +34,7 @@
     * A datapipline module that can easily be adapted to fetch data of your favorite coin and time frame and store it into a csv file.
 	* A collection of csv files with the data of your favorite coins to improve backtesting speed and enable coding work offline.
 
-    ![Image](./images/Backtest.png)
+    ![Image](./images/backtest_flowchart.png)
 
     > The above flow chart shows the data flow from the exchange API through the datapipline into the database. From there we load the data to run backtests and produce detailed reports on all our teted strategies.
 
@@ -54,8 +54,53 @@ First, clone the repository.
 
 ## Usage
 
-## Getting Data
+### Live Trading
 
+I personally run this code in the cloud and can help you get started.
+
+If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+
+
+### Writing Backtests: Single Strategies and Full Portfolios
+
+#### Single Strategy Backtest
+To set up a new backtest for an individual strategy, you will create a new .py file in the /bot/back_tests/ directory with the name of your backtest.
+
+You can copy paste the code from the exisiting backtest_continuation_trade.py module. In this module, we backtest the continuation trade strategy. For this we import the ContinuationTrade class like this:
+
+```Python
+from  src.strategies.ContinuationTrade  import  ContinuationTrade
+```
+
+You will replace this import line with the module and class of your own strategy. You can also change the preset list of markets and adjust the set of risk levels, leverage sizes, and reward/risk ratios if the predefined ones do not fit your particular use case.
+
+```Python  
+markets = [btc_cont, eth_cont, sol_cont, doge_cont]
+
+risk_samples = [0.001, 0.005 , 0.01, 0.05, 0.1, 0.2]
+leverage_samples = [1 , 3, 5, 10]
+risk_reward = [2.0, 3.0]
+```
+If you want to trade markets that are not included in the current code, make sure to define them in the Assets.py module and import them.
+
+The last step is to loop through all markets and run the backtests. Here you have to change the second argument "ContinuationTrade" to be your strategy.
+
+```Python
+for  market  in  markets:
+	bt.run(ec, ContinuationTrade, market, risk_samples, leverage_samples,
+		   risk_reward, Timeframes)
+```
+The Backtest object will also save a report of you backtest in the /bot/back_tests/backtest_reports/ directory including equity curves and the most important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
+
+![image](./images/single_strat_backtest.pdf)
+
+#### Full Portfolio Backtest
+
+*Work in progress*
+
+### Assembling a Portfolio
+
+*Work in progress*
 
 ### Getting Data
 
@@ -109,24 +154,9 @@ print(Timeframes.FIVE_MINUTES.value + ' done! \n')
 ```
 The ```timedelta``` this way since we can at most request 1000 data entries at a time from the Binance API. By default it is 500 data entries, but by explicitly requesting 1000 we can reduce the number of requests and therefore the time it takes to download our data.
 
-
 ### Writing a Backtest
 
 *Work in progress*
-
-### Writing a Strategy
-
-*Work in progress*
-
-### Assembling a Portfolio
-
-*Work in progress*
-
-### Live Trading
-
-I personally run this code in the cloud and can help you get started.
-
-If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
 
 ## Contributing
 
