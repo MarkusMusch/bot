@@ -74,6 +74,10 @@ Whilst the abstract strategy class is in the /bot/src/ directory, the actual imp
 
 So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
 
+<p align="center">
+  <img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_inheritance.png">
+</p>
+
 ### Assembling a Full Portfolio for Live Trading
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
 
