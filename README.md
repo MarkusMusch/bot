@@ -55,7 +55,6 @@ First, clone the repository.
 ## Usage
 
 ### Live Trading
-<<<<<<< HEAD
 
 I personally run this code in the cloud and can help you get started.
 
@@ -93,7 +92,7 @@ for  market  in  markets:
 ```
 The Backtest object will also save a report of you backtest in the /bot/back_tests/backtest_reports/ directory including equity curves and the most important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
 
-![image](./images/single_strat_backtest.pdf)
+![image](./images/single_strat_backtest.png)
 
 #### Full Portfolio Backtest
 
@@ -107,7 +106,6 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 I personally run this code in the cloud and can help you get started.
 
 If you are serious about setting up my framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
->>>>>>> 227788d6107e821cfa51673979addd6cf257d934
 
 ### Getting Data
 
