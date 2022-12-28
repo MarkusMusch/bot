@@ -72,12 +72,42 @@ Our example is a strategy that bets on the continuation of an ongoing trend. If 
 
 Whilst the abstract strategy class is in the /bot/src/ directory, the actual implementation of a particular strategy is in the /bot/src/strategies directory. 
 
-So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
+So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies/ directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_inheritance.png"
   width=50%>
 </p>
+
+The Strategy base class has a total of eight abstract methods that we have to implement in our child class.
+
+The ```next_candle_init``` and ```next_candle_live``` methods give an interface for our backtest and live trading modules to distinguish between the two.
+
+If we are initializing a strategy for live trading or only running a backtest, we call the ```next_candle_init``` method. 
+
+```
+bla
+```
+
+This method only calls the ```setup_trade``` methods.
+
+The ```setup_trade``` method checks if a trade set up has been triggered with the recent candle, and if yes, sets the trigger flag for a long or a short set up to ```True```.
+
+If we are not trading live, we record the current equity in every step to evaluate the equity curve later on. If we are trading live we skip this step.
+
+If we are trading live, we call the ```next_candle_live``` method.
+
+```
+bla
+```
+
+This method calls both the ```execute_trade``` method to generate live signals, and the ```setup_trade``` method to detect new set ups.
+
+The ```execute_trade``` method checks if a new trigger has been set or if there is an existing position and calls the ```entry_long```, ```entry_short```, ```exit_long```, or ```exit_short``` method respectively.
+
+If ```entry_long``` or ```entry_short``` is being called some more conditions such as a sufficient reward/risk ratio are being checked. If those conditions are satisfied a trade is being entered on exchange via our RESTClient object.
+
+If ```exit_long``` or ```exit_short``` is being called the current trade is being closed on exchange via our RESTClient object.
 
 ### Assembling a Full Portfolio for Live Trading
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
