@@ -9,7 +9,7 @@ from src.DataHandler import DataHandler
 from src.Portfolio import Portfolio
 
 
-def initialize_portfolio(markets: list, live: bool = False):
+def initialize_portfolio(markets: list, live: bool = False) -> Portfolio:
     logging.basicConfig(filename='scalp_bot.log', level=logging.WARNING)
 
     ec = BinanceFuturesClient()
