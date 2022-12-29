@@ -3,17 +3,17 @@
 
 ## One-Stop Toolkit for Fully Automated Algorithmic Trading.
 
-Introducing the *ultimate solution* for *automated trading*: the **One-Stop Toolkit for Algorithmic Trading**. This *powerful* toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the *cloud*, while you are sipping margaritas on the Caribbean. All in one *easy-to-use* package.
+Introducing the **ultimate solution** for **automated trading**: the **One-Stop Toolkit for Algorithmic Trading**. This **powerful** toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the **cloud**, while you are sipping margaritas on the Caribbean. All in one **easy-to-use** package.
 
-With our toolkit, you can easily *design*, *test*, and *deploy* your own *trading strategies*. Whether you're a beginner or an experienced trader, our *intuitive interface* makes it easy to get started.
+With our toolkit, you can easily **design**, **test**, and **deploy** your own **trading strategies**. Whether you're a beginner or an experienced trader, our **intuitive interface** makes it easy to get started.
 
-Our toolkit includes a *full suite of tools* and features, including:
+Our toolkit includes a **full suite of tools** and features, including:
 
-* *Data sourcing and handling*
-* *Customizable backtesting* and *optimization* tools
-* *Live trading* and *real-time market data*
+* **Data sourcing and handling**
+* **Customizable backtesting** and **optimization** tools
+* **Live trading** and **real-time market data**
 
-Don't waste your time with *multiple tools and platforms* – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start *automating your trades* today and see the results for yourself.
+Don't waste your time with **multiple tools and platforms** – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start **automating your trades** today and see the results for yourself.
 
 ## Includes:
 
