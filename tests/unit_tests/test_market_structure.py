@@ -1,4 +1,3 @@
-from datetime import datetime
 import pandas as pd
 
 from src.Assets import btc_cont
@@ -7,7 +6,6 @@ from src.MarketStructure import MarketStructure
 
 def test_ms_load_data():
     """Test if data is being loaded correctly."""
-
 
     test_df = pd.DataFrame([58348.6, 58224.3, 57796.9, 57430.2],
                            columns=['open'])
@@ -19,7 +17,7 @@ def test_ms_load_data():
     df.reset_index(inplace=True)
 
     assert df['open'].equals(test_df['open'])
-                 
+
 
 def test_ms_stay_in_range():
     """Test if market structure staying in range is being reconginzed

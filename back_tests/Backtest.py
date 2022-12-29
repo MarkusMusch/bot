@@ -24,7 +24,7 @@ class Backtest():
         """Goes through a given set of historical data and applies the trading
         strategy to this data."""
 
-        df = pd.read_csv('./database/datasets/binance_futures/' + \
+        df = pd.read_csv('./database/datasets/binance_futures/' +
                          market_name + '/' + timeframe + '.csv')
         df = df[df['open time'] >= int(start.timestamp()*1000)]
 
@@ -71,7 +71,8 @@ class Backtest():
                         ms = MarketStructure(ath, prev_low, ath, prev_low)
                         rtit = trade(ec, ms, market)
 
-                        self.backtest(rtit, timeframe.value, market_name, start)
+                        self.backtest(rtit, timeframe.value, market_name,
+                                      start)
 
                         stats_dict = stats.get_stats(rtit.equity_curve)
 
@@ -80,13 +81,14 @@ class Backtest():
 
                         axs[idx_subplot][0].plot(rtit.equity_curve)
                         axs[idx_subplot][0].set_title(
-                            'Equity Curve ' + market_name 
+                            'Equity Curve ' + market_name
                             + ' at max. risk {:.2%} '.format(risk)
                             + 'with max. leverage {:.1f} '.format(leverage)
                             + 'and R/R {:.1f} \n'.format(rr)
                             + 'Sharpe: {:.2f}, '.format(stats_dict['sharpe'])
                             + 'Sortino: {:.2f}, '.format(stats_dict['sortino'])
-                            + 'Max. Drawdown: {:.2%}'.format(stats_dict['max_dd']))
+                            + 'Max. '
+                            + 'Drawdown: {:.2%}'.format(stats_dict['max_dd']))
                         axs[idx_subplot][0].grid(True)
 
                         axs[idx_subplot][1].plot(rtit.position_size)

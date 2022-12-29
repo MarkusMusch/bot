@@ -1,11 +1,11 @@
 import os
 import sys
 
+from datetime import datetime, timedelta
+
 currentdir = os.path.dirname(os.path.realpath(__file__))
 parentdir = os.path.dirname(currentdir)
 sys.path.append(parentdir)
-
-from datetime import datetime, timedelta
 
 from src.RESTClient import BinanceFuturesClient
 from src.DataHandler import DataHandler
@@ -21,12 +21,11 @@ def download(market: str, timeframe: str, delta: timedelta):
                            datetime(2017, 7, 14, 0, 0, 0, 0),
                            delta)
 
-
     path = './database/datasets/binance_futures/' + market + '/'
     if not os.path.exists(path):
         os.makedirs(path)
-    
-    df.to_csv(path + timeframe +'.csv')
+
+    df.to_csv(path + timeframe + '.csv')
 
 
 busd_markets = ['BTCBUSD', 'ETHBUSD', 'SOLBUSD', 'DOGEBUSD']
