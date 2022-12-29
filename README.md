@@ -3,17 +3,17 @@
 
 ## One-Stop Toolkit for Fully Automated Algorithmic Trading.
 
-Introducing the ultimate solution for automated trading: the One-Stop Toolkit for Algorithmic Trading. This powerful toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the cloud, while you are sipping margaritas on the Caribbean. All in one easy-to-use package.
+Introducing the *ultimate solution* for *automated trading*: the **One-Stop Toolkit for Algorithmic Trading**. This *powerful* toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the *cloud*, while you are sipping margaritas on the Caribbean. All in one *easy-to-use* package.
 
-With our toolkit, you can easily design, test, and deploy your own trading strategies. Whether you're a beginner or an experienced trader, our intuitive interface makes it easy to get started.
+With our toolkit, you can easily *design*, *test*, and *deploy* your own *trading strategies*. Whether you're a beginner or an experienced trader, our *intuitive interface* makes it easy to get started.
 
-Our toolkit includes a full suite of tools and features, including:
+Our toolkit includes a *full suite of tools* and features, including:
 
-* Data sourcing and handling
-* Customizable backtesting and optimization tools
-* Live trading and real-time market data
+* *Data sourcing and handling*
+* *Customizable backtesting* and *optimization* tools
+* *Live trading* and *real-time market data*
 
-Don't waste your time with multiple tools and platforms – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start automating your trades today and see the results for yourself."
+Don't waste your time with *multiple tools and platforms* – get everything you need with the One-Stop Toolkit for Algorithmic Trading. Start *automating your trades* today and see the results for yourself.
 
 ## Includes:
 
@@ -80,11 +80,11 @@ If you are serious about setting up this framework on a cloud server, reach out 
 
 ### Writing a Strategy
 
-Our example is a strategy that bets on the continuation of an ongoing trend. If the market is in an up-trend, and certain criteria are satisfied, the strategy enters a long trade to profit from the continuation of the up-trend. In the same way, we enter a short trade if the market is in an ongoing down-trend and certain criteria are satisfied.
+Our example is a strategy that bets on the continuation of an ongoing trend. If the market is in an up-trend, and certain criteria are met, the strategy enters a long trade to profit from the continuation of the up-trend. In the same way, we enter a short trade if the market is in an ongoing down-trend.
 
-Whilst the abstract strategy class is in the /bot/src/ directory, the actual implementation of a particular strategy is in the /bot/src/strategies directory. 
+Whilst the abstract strategy class is in the bot/src/ directory, the actual implementation of a particular strategy is in the bot/src/strategies directory. 
 
-So, to implement our trend continuation strategy we create a new file in the /bot/src/strategies/ directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
+So, to implement our trend continuation strategy, we create a new file in the bot/src/strategies/ directory. In our case it is called ContinuationTrade.py. In this file we implement the trade logic in a class that inherits from Strategy.
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_inheritance.png"
@@ -93,7 +93,7 @@ So, to implement our trend continuation strategy we create a new file in the /bo
 
 The Strategy base class has a total of eight abstract methods that we have to implement in our child class.
 
-The ```next_candle_init``` and ```next_candle_live``` methods give an interface for our backtest and live trading modules to distinguish between the two.
+The ```next_candle_init``` and ```next_candle_live``` methods give a public interface for our backtest and live trading modules to distinguish between initialization, backtesting, and live trading.
 
 If we are initializing a strategy for live trading, we call the ```next_candle_init``` method. 
 
@@ -113,13 +113,13 @@ def  next_candle_init(self, row: pd.Series) -> None:
 ```
 
 
-This method only calls the ```setup_trade``` methods.
+This method calls the ```setup_trade``` methods.
 
 The ```setup_trade``` method checks if a trade set up has been triggered with the recent candle, and if yes, sets the trigger flag for a long or a short set up to ```True```.
 
-If we are not trading live, we record the current equity in every step to evaluate the equity curve later on. If we are trading live we skip this step.
+If we are not trading live, we record the current equity in every step to evaluate the equity curve later on.
 
-If we are trading live, we call the ```next_candle_live``` method.
+If we are trading live or running a backtest, we call the ```next_candle_live``` method.
 
 
 
@@ -139,19 +139,20 @@ self._setup_trade(row)
 ```
 
 
-This method calls both the ```execute_trade``` method to generate live signals, and the ```setup_trade``` method to detect new set ups.
+This method calls both the ```execute_trade``` method to generate trading signals, and the ```setup_trade``` method to detect new set ups.
 
 The ```execute_trade``` method checks if a new trigger has been set or if there is an existing position and calls the ```entry_long```, ```entry_short```, ```exit_long```, or ```exit_short``` method respectively.
 
-If ```entry_long``` or ```entry_short``` is being called some more conditions such as a sufficient reward/risk ratio are being checked. If those conditions are satisfied a trade is being entered on exchange via our RESTClient object.
+If ```entry_long``` or ```entry_short``` is being called some more conditions such as a sufficient reward/risk ratio are being checked. If those conditions are satisfied a trade is being entered on exchange via our RESTClient object for live trading, or recorded without actual execution for backtesting.
 
-If ```exit_long``` or ```exit_short``` is being called the current trade is being closed on exchange via our RESTClient object.
+If ```exit_long``` or ```exit_short``` is being called the current trade is being closed on exchange via our RESTClient object for live trading, or recorded without actual execution for backtesting.
 
 
 <p align="center">
 <img src="https://github.com/MarkusMusch/bot/blob/main/images/strategy_control_flow.png" />
 </p>
 
+This diagram shows the whole control flow described above.
 
 ### Assembling a Full Portfolio for Live Trading
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the live.py module like this:
@@ -172,11 +173,12 @@ if  __name__ == '__main__':
 
 	trade(portfolio)
 ```
+As straight forward as can be.
 
 ### Writing Backtests: Single Strategies and Full Portfolios
 
 #### Single Strategy Backtest
-To set up a new backtest for an individual strategy, you will create a new .py file in the /bot/back_tests/ directory with the name of your backtest.
+To set up a new backtest for an individual strategy, you will create a new .py file in the bot/back_tests/ directory with the name of your backtest.
 
 You can copy paste the code from the exisiting backtest_continuation_trade.py module. In this module, we backtest the continuation trade strategy. For this we import the ContinuationTrade class like this:
 
@@ -195,14 +197,14 @@ risk_reward = [2.0, 3.0]
 ```
 If you want to trade markets that are not included in the current code, make sure to define them in the Assets.py module and import them.
 
-The last step is to loop through all markets and run the backtests. Here you have to change the second argument "ContinuationTrade" to be your strategy.
+The last step is to loop through all markets and run the backtests. Here you have to change the second argument "ContinuationTrade" to be *your* strategy.
 
 ```Python
 for  market  in  markets:
 	bt.run(ec, ContinuationTrade, market, risk_samples, leverage_samples,
 		   risk_reward, Timeframes)
 ```
-The Backtest object will also save a report of you backtest in the /bot/back_tests/backtest_reports/ directory including equity curves and the most important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
+The Backtest object will also save a report of you backtest in the bot/back_tests/backtest_reports/ directory including equity curves and important performance metrics such as Sharpe ratio, Sortino ratio, and maximum draw down of your test run.
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/single_strat_backtest.png">
@@ -210,7 +212,7 @@ The Backtest object will also save a report of you backtest in the /bot/back_tes
 
 #### Full Portfolio Backtest
 
-Setting up a full portfolio backtest works almost the same way as setting up a portfolio for live trading which has been explained above.
+Setting up a full portfolio backtest works almost the same way as setting up a portfolio for live trading, which has been explained above.
 
 To assemble your portfolio, define your tradable assets in Assets.py. Import them into the backtest_portfolio.py module like this:
 
@@ -227,7 +229,7 @@ markets = [btc_cont, eth_cont, sol_cont, doge_cont]
 
 portfolio = initialize_portfolio(markets, live=False)
 ```
-The only difference to setting up a live trading portfolio is that we set the live parameter to ```False``` when initializing the portfolio and not calling the trade function that initiate the scheduler for live trading.
+The only difference to setting up a live trading portfolio is that we set the live parameter to ```False``` when initializing the portfolio and not calling the trade function that initiates the scheduler for live trading.
 
 <p align="center">
   <img src="https://github.com/MarkusMusch/bot/blob/main/images/portfolio_backtest.png">
@@ -252,14 +254,14 @@ In the datapipline.py module we define the tickers we are interested in.
 busd_markets = ['BTCBUSD', 'ETHBUSD', 'SOLBUSD', 'DOGEBUSD']
 ```
 
-In our case we are interested in the BUSD futures for $BTC, $ETH, $SOL, and $DOGE. If you are interested in other coins you can find out their ticker on your exchanges' website and replace them in the list above. Make sure to also adapt the classes in the RESTClient.py module if you are using another exchange.
+In our case we are interested in the BUSD futures for $BTC, $ETH, $SOL, and $DOGE. If you are interested in other coins you can find out their ticker on your exchange's website and replace them in the list above. Make sure to also adapt the classes in the RESTClient.py module if you are using another exchange.
 
 Now we only need to run
 ```bash
 Python3 datapipeline.py
 ```
 
-from the /bot directory and it will load the requested data from the Binance futures API into csv files located in the /bot/database/datasets directory.
+from the /bot directory and it will load the requested data from the Binance futures API into csv files located in the bot/database/datasets directory.
 
 By default, the time frames 1d, 1h, and 4h are implemented but if you are interested in other time frames you can easily extend the Enum
 
@@ -284,6 +286,14 @@ download(market, Timeframes.FIVE_MINUTES.value, timedelta(minutes=4999))
 print(Timeframes.FIVE_MINUTES.value + ' done! \n')
 ```
 The ```timedelta``` this way since we can at most request 1000 data entries at a time from the Binance API. By default it is 500 data entries, but by explicitly requesting 1000 we can reduce the number of requests and therefore the time it takes to download our data.
+
+### Unit Tests
+
+To run the included unit tests execute
+
+pytest -v -k "test_ms or test_data_fetch_current"
+
+This does not all the included unit tests, but the remainder needs you to set up a Telegram bot. You will need to [set up a Telegram bot](https://sarafian.github.io/low-code/2020/03/24/create-private-telegram-chatbot.html) before you start trading live so the algorithm can send you messages to your phone upon entering and exiting trades.
 
 ## Contributing
 
