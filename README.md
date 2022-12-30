@@ -313,4 +313,4 @@ Markus Musch: [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/)
 
 ### License
 
-See the [LICENSE](LICENSE.md) file for license rights and limitations (GNU GPLv3).
+See the [LICENSE](LICENSE.txt) file for license rights and limitations (GNU GPLv3).
