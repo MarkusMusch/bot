@@ -261,7 +261,7 @@ Now we only need to run
 Python3 datapipeline.py
 ```
 
-from the /bot directory and it will load the requested data from the Binance futures API into csv files located in the bot/database/datasets directory.
+in the terminal from the bot directory and it will load the requested data from the Binance futures API into csv files located in the bot/database/datasets directory.
 
 By default, the time frames 1d, 1h, and 4h are implemented but if you are interested in other time frames you can easily extend the Enum
 
