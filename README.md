@@ -52,7 +52,7 @@ Don't waste your time with **multiple tools and platforms** – get everything y
 	<img src="https://github.com/MarkusMusch/bot/blob/main/images/pnl.jpeg" />
 	</p>
 
-    > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%
+    > In the period from 11th of December 2022, when the bot first went live, until 28th of December 2022 it produced a cummulative PnL of 9.59%.
     >
     > Note! This public repository does not contain my full set of proprietary trading strategies. It only contains one of the strategies which make up my portfolio to serve as an example for users. My full portfolio consists of a diversified collection of strategies to maximize risk adjusted returns.
 
