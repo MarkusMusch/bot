@@ -76,7 +76,7 @@ First, clone the repository.
 
 I personally run this code in the cloud and can help you get started.
 
-If you are serious about setting up this framework on a cloud server, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+If you are serious about setting up this framework on a cloud server, reach out to me.
 
 ### Writing a Strategy
 
@@ -303,13 +303,13 @@ This does not all the included unit tests, but the remainder needs you to set up
 4. Push to the branch (git push origin feature/fooBar')
 5. Create a new Pull Request
 
-If you are serious about  contributing to the project or you have a similar project and are keen to discuss coding or trading, reach out to me on [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/).
+If you are serious about  contributing to the project or you have a similar project and are keen to discuss coding or trading, reach out to me.
 
 ## License and author info
 
 ### Author
 
-Markus Musch: [Linkedin](https://www.linkedin.com/in/dr-markus-musch-b504a21b7/)
+Markus Musch
 
 ### License
 
