@@ -1,7 +1,7 @@
 
 # Trading Bot
 
-NB! This repository is now being developed as two separate project. The backtesting engine is further developed in [bot](https://github.com/MarkusMusch/backtest), whilst the live trading framework is being developed in [autotrader](https://github.com/MarkusMusch/autotrader).
+NB! This repository is now being developed as two separate project. The backtesting engine is further developed in [backtest](https://github.com/MarkusMusch/backtest), whilst the live trading framework is being developed in [autotrader](https://github.com/MarkusMusch/autotrader).
 
 ## One-Stop Toolkit for Fully Automated Algorithmic Trading.
 
