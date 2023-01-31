@@ -1,6 +1,8 @@
 
 # Trading Bot
 
+NB! This repository is now being developed as two separate project. The backtesting engine is further developed in [bot](https://github.com/MarkusMusch/backtest), whilst the live trading framework is being developed in [autotrader](https://github.com/MarkusMusch/autotrader).
+
 ## One-Stop Toolkit for Fully Automated Algorithmic Trading.
 
 Introducing the **ultimate solution** for **automated trading**: the **One-Stop Toolkit for Algorithmic Trading**. This **powerful** toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the **cloud**, while you are sipping margaritas on the Caribbean. All in one **easy-to-use** package.
