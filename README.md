@@ -5,9 +5,9 @@
 
 Introducing the **ultimate solution** for **automated trading**: the **One-Stop Toolkit for Algorithmic Trading**. This **powerful** toolkit combines all the tools you need to create sophisticated trading algorithms and run them in the **cloud**, while you are sipping margaritas on the Caribbean. All in one **easy-to-use** package.
 
-With our toolkit, you can easily **design**, **test**, and **deploy** your own **trading strategies**. Whether you're a beginner or an experienced trader, our **intuitive interface** makes it easy to get started.
+With this toolkit, you can easily **design**, **test**, and **deploy** your own **trading strategies**. Whether you're a beginner or an experienced trader, our **intuitive interface** makes it easy to get started.
 
-Our toolkit includes a **full suite of tools** and features, including:
+The toolkit includes a **full suite of tools** and features, including:
 
 * **Data sourcing and handling**
 * **Customizable backtesting** and **optimization** tools
@@ -294,8 +294,6 @@ This does not all the included unit tests, but the remainder needs you to set up
 3. Commit your changes (git commit -am 'Add some fooBar')
 4. Push to the branch (git push origin feature/fooBar')
 5. Create a new Pull Request
-
-If you are serious about  contributing to the project or you have a similar project and are keen to discuss coding or trading, reach out to me.
 
 ## License and author info
 
